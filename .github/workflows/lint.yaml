@@ -17,6 +17,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - uses: astral-sh/setup-uv@v4
+        with:
+          enable-cache: true
+      - run: ruff check .
+      - run: ruff format . --check
+      
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
